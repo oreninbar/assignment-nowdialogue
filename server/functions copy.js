@@ -10,7 +10,7 @@ async function createAllMovieList() {
     );
     let tempActorList = [];
     for (const movie of actorMoviesList.cast) {
-      isMarvelMovie(movie.id) &&
+      isAvengersMovie(movie.id) &&
         tempActorList.push({
           id: movie.id,
           name: movie.title,
@@ -27,7 +27,7 @@ async function createAllMovieList() {
   return allActorsMoviesList;
 }
 
-function isMarvelMovie(movie_id) {
+function isAvengersMovie(movie_id) {
   for (const key in data.movie) {
     if (data.movie[key] == movie_id) return true;
   }
@@ -36,19 +36,11 @@ function isMarvelMovie(movie_id) {
 
 function isTheSameCharacter(c1, c2) {
   let i = 0;
-  while (i < c1.toString().length && c1[i] !== " " && c1[i] !== "/") {
+  while (i < c1.toString().length && c1[i] != " ") {
     i++;
   }
-  let tempCharacter = c1.slice(0, i);
-  if (c2.toString().search(tempCharacter) > -2) return true;
-  i++;
-  let j = i;
-  while (i < c1.toString().length && c1[i] !== " " && c1[i] !== "/") {
-    i++;
-  }
-  tempCharacter = c1.slice(j, i);
-  if (c2.toString().search(tempCharacter) > -2) return true;
-  return false;
+  const tempCharacter = c1.slice(0, i);
+  return c2.search(tempCharacter) == 0 ? true : false;
 }
 
 function playedMoreThenOne(allActorsMoviesList) {
@@ -63,11 +55,6 @@ function playedMoreThenOne(allActorsMoviesList) {
         ? (overOneCharacter = false)
         : (overOneCharacter = true);
       if (overOneCharacter) {
-        console.log(
-          actor.movies[i].character,
-          "-VS-",
-          actor.movies[i - 1].character
-        );
         break;
       }
     }
@@ -108,7 +95,7 @@ function playedTheSameRoll(allActorsMoviesList, length) {
 }
 
 module.exports = {
-  isMarvelMovie,
+  isAvengersMovie,
   createAllMovieList,
   isTheSameCharacter,
   playedMoreThenOne,

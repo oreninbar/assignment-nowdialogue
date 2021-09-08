@@ -72,20 +72,8 @@ http://localhost:8080/question2
         "id": 1245
     },
     {
-        "name": "Don Cheadle",
-        "id": 1896
-    },
-    {
         "name": "Michael B. Jordan",
         "id": 135651
-    },
-    {
-        "name": "Gwyneth Paltrow",
-        "id": 12052
-    },
-    {
-        "name": "Chadwick Boseman",
-        "id": 172069
     }
 ]
 
@@ -108,8 +96,11 @@ http://localhost:8080/question3
 
 ```
 // Array of actors (from list of Marvel Actors ), with id, name. 
-in this question the answer will be []
-
+in this question the answer will be 
+    {
+        "name": "Michael B. Jordan",
+        "name": "Chris Evans"
+    }
 
 or
 
